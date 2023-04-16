@@ -19,7 +19,74 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://fonts.cdnfonts.com/css/charger" rel="stylesheet">
-    <script type="text/javascript">function render(e,t,n){let l=document.getElementById("canvas"),a=l.getContext("2d");a.clearRect(0,0,l.width,l.height);let r=new Image;r.addEventListener("load",()=>{a.drawImage(r,0,0),a.font="bold 30px charger",a.textAlign="center",a.fillText(e,260,375),a.font="bold 60px charger",a.fillText(t,260,420),a.font="bold 35px charger",a.fillText(n,260,450)}),r.src="template.png"}function draw(){render("BEWARE THE","BASS TROUBLE","LINEUP TBA")}function redraw(){render(document.getElementById("line1").value.toUpperCase(),document.getElementById("line2").value.toUpperCase(),document.getElementById("line3").value.toUpperCase())}function get(e,t){var n,l=document.createElement("a");l.download=t,l.href=e.toDataURL("image/png;base64"),document.createEvent?((n=document.createEvent("MouseEvents")).initMouseEvent("click",!0,!0,window,0,0,0,0,0,!1,!1,!1,!1,0,null),l.dispatchEvent(n)):l.fireEvent&&l.fireEvent("onclick")}</script>
+    <script type="text/javascript">
+        function draw() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            let img = new Image();
+            img.addEventListener("load", () => {
+                var myFont = new FontFace('charger', 'url(charger.otf)');
+                myFont.load().then(function(font) {
+                    document.fonts.add(font);
+                    ctx.drawImage(img, 0, 0);
+                    ctx.font = 'bold 30px charger';
+                    ctx.textAlign = "center";
+                    ctx.fillText('BEWARE THE', 258, 375);
+                    ctx.font = 'bold 60px charger';
+                    ctx.fillText('BASS TROUBLE', 258, 420);
+                    ctx.font = 'bold 35px charger';
+                    ctx.fillText('LINEUP TBA', 258, 450);
+                });
+            });
+            img.src = "template.png";
+        }
+
+        function redraw() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let img = new Image();
+            const line1 = document.getElementById("line1").value.toUpperCase();
+            const line2 = document.getElementById("line2").value.toUpperCase();
+            const line3 = document.getElementById("line3").value.toUpperCase();
+            img.addEventListener("load", () => {
+                ctx.drawImage(img, 0, 0);
+                ctx.font = 'bold 30px charger';
+                ctx.textAlign = "center";
+                ctx.fillText(line1, 260, 375);
+                ctx.font = 'bold 60px charger';
+                ctx.fillText(line2, 260, 420);
+                ctx.font = 'bold 35px charger';
+                ctx.fillText(line3, 260, 450);
+            });
+            img.src = "template.png";
+        }
+
+        function get(canvas, filename) {
+            /// create an "off-screen" anchor tag
+            var lnk = document.createElement('a'), e;
+
+            /// the key here is to set the download attribute of the a tag
+            lnk.download = filename;
+
+            /// convert canvas content to data-uri for link. When download
+            /// attribute is set the content pointed to by link will be
+            /// pushed as "download" in HTML5 capable browsers
+            lnk.href = canvas.toDataURL("image/png;base64");
+
+            /// create a "fake" click-event to trigger the download
+            if (document.createEvent) {
+                e = document.createEvent("MouseEvents");
+                e.initMouseEvent("click", true, true, window,
+                    0, 0, 0, 0, 0, false, false, false,
+                    false, 0, null);
+
+                lnk.dispatchEvent(e);
+            } else if (lnk.fireEvent) {
+                lnk.fireEvent("onclick");
+            }
+        }
+    </script>
 </head>
 <body onload="draw();">
 <div class="container row">
@@ -30,9 +97,9 @@
                 <h5>Type in some text and we will make your sign</h5>
                 <label>Line 1 text: <input placeholder="Line 1 text" id="line1"
                                            onkeyup="this.value = this.value.toUpperCase(); redraw();"/></label>
-                <label>Line 2 text: <input placeholder="Line 2 text" id="line2"
+                <label>Line 2 text: <input placeholder="Line 1 text" id="line2"
                                            onkeyup="this.value = this.value.toUpperCase(); redraw();"/></label>
-                <label>Line 3 text: <input placeholder="Line 3 text" id="line3"
+                <label>Line 3 text: <input placeholder="Line 1 text" id="line3"
                                            onkeyup="this.value = this.value.toUpperCase(); redraw();"/></label>
                 <div class="card teal lighten-1">
                     <div class="card-content white-text">
