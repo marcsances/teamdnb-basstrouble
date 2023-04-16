@@ -25,14 +25,18 @@
             const ctx = canvas.getContext('2d');
             let img = new Image();
             img.addEventListener("load", () => {
-                ctx.drawImage(img, 0, 0);
-                ctx.font = 'bold 30px charger';
-                ctx.textAlign = "center";
-                ctx.fillText('BEWARE THE', 260, 375);
-                ctx.font = 'bold 60px charger';
-                ctx.fillText('BASS TROUBLE', 260, 420);
-                ctx.font = 'bold 35px charger';
-                ctx.fillText('LINEUP TBA', 260, 450);
+                var myFont = new FontFace('charger', 'url(charger.otf)');
+                myFont.load().then(function(font) {
+                    document.fonts.add(font);
+                    ctx.drawImage(img, 0, 0);
+                    ctx.font = 'bold 30px charger';
+                    ctx.textAlign = "center";
+                    ctx.fillText('BEWARE THE', 260, 375);
+                    ctx.font = 'bold 60px charger';
+                    ctx.fillText('BASS TROUBLE', 260, 420);
+                    ctx.font = 'bold 35px charger';
+                    ctx.fillText('LINEUP TBA', 260, 450);
+                });
             });
             img.src = "template.png";
         }
