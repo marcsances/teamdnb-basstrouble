@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+    <!--
+    Copyright 2023, Marc Sances
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    -->
+    <meta http-equiv="Content-Encoding" charset="utf-8"/>
+    <title>Bass Trouble Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.cdnfonts.com/css/charger" rel="stylesheet">
+    <script type="text/javascript">
+        function draw() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            let img = new Image();
+            img.addEventListener("load", () => {
+                ctx.drawImage(img, 0, 0);
+                ctx.font = 'bold 30px charger';
+                ctx.textAlign = "center";
+                ctx.fillText('BEWARE THE', 260, 375);
+                ctx.font = 'bold 60px charger';
+                ctx.fillText('BASS TROUBLE', 260, 420);
+                ctx.font = 'bold 35px charger';
+                ctx.fillText('LINEUP TBA', 260, 450);
+            });
+            img.src = "template.png";
+        }
+
+        function redraw() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let img = new Image();
+            const line1 = document.getElementById("line1").value.toUpperCase();
+            const line2 = document.getElementById("line2").value.toUpperCase();
+            const line3 = document.getElementById("line3").value.toUpperCase();
+            img.addEventListener("load", () => {
+                ctx.drawImage(img, 0, 0);
+                ctx.font = 'bold 30px charger';
+                ctx.textAlign = "center";
+                ctx.fillText(line1, 260, 375);
+                ctx.font = 'bold 60px charger';
+                ctx.fillText(line2, 260, 420);
+                ctx.font = 'bold 35px charger';
+                ctx.fillText(line3, 260, 450);
+            });
+            img.src = "template.png";
+        }
+
+        function get(canvas, filename) {
+            /// create an "off-screen" anchor tag
+            var lnk = document.createElement('a'), e;
+
+            /// the key here is to set the download attribute of the a tag
+            lnk.download = filename;
+
+            /// convert canvas content to data-uri for link. When download
+            /// attribute is set the content pointed to by link will be
+            /// pushed as "download" in HTML5 capable browsers
+            lnk.href = canvas.toDataURL("image/png;base64");
+
+            /// create a "fake" click-event to trigger the download
+            if (document.createEvent) {
+                e = document.createEvent("MouseEvents");
+                e.initMouseEvent("click", true, true, window,
+                    0, 0, 0, 0, 0, false, false, false,
+                    false, 0, null);
+
+                lnk.dispatchEvent(e);
+            } else if (lnk.fireEvent) {
+                lnk.fireEvent("onclick");
+            }
+        }
+    </script>
+</head>
+<body onload="draw();">
+<div class="container row">
+    <div class="col l6">
+        <div class="section card">
+            <div class="card-content" style="height: calc(100vh - 80px)">
+                <h3>Generate your own Bass Trouble!</h3>
+                <h5>Type in some text and we will make your sign</h5>
+                <label>Line 1 text: <input placeholder="Line 1 text" id="line1"
+                                           onkeyup="this.value = this.value.toUpperCase(); redraw();"/></label>
+                <label>Line 2 text: <input placeholder="Line 1 text" id="line2"
+                                           onkeyup="this.value = this.value.toUpperCase(); redraw();"/></label>
+                <label>Line 3 text: <input placeholder="Line 1 text" id="line3"
+                                           onkeyup="this.value = this.value.toUpperCase(); redraw();"/></label>
+                <div class="card teal lighten-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Having fun?</span>
+                        <p>Join our Bass Trouble event on Twitch for some crazy badass DNB on April 28th through 30th!</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://instagram.com/teamdnb_events" class="white-text">Follow us on Instagram</a>
+                        <a href="https://facebook.com/teamdnbevents" class="white-text">Like on Facebook</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col l6">
+        <div class="section card">
+            <div class="card-content" style="height: calc(100vh - 80px)">
+                <h3>Result</h3>
+                <canvas id="canvas" width="512" height="512"></canvas>
+                <a class="waves-effect waves-light btn" onclick="get(document.getElementById('canvas'), 'letter.png')">Download</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
+</body>
+</html>
