@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+    <!--
+    Copyright 2023, Marc Sances
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    -->
+    <meta http-equiv="Content-Encoding" charset="utf-8"/>
+    <title>Bass Trouble Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.cdnfonts.com/css/charger" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, {});
+        });
+    </script>
+</head>
+<body>
+<div class="container row">
+    <div class="col l12">
+        <div class="section card">
+            <div class="card-content" style="height: 300px">
+                <h1>Team DnB Bass Trouble Event Lineup</h1>
+                <h5>April 28th - April 30th - Only on Twitch</h5>
+                <div class="input-field col l12">
+                    <select id="timezone-select">
+                        <option value="utc" selected>UTC</option>
+                        <option value="utc-10">Honolulu (UTC-10:00)</option>
+                        <option value="utc-8">Los Angeles (UTC-08:00)</option>
+                        <option value="utc-6">Chicago (UTC-06:00)</option>
+                        <option value="utc-5">New York (UTC-05:00)</option>
+                        <option value="utc-4">Halifax (UTC-04:00)</option>
+                        <option value="utc-3">São Paulo and Buenos Aires (UTC-03:00)</option>
+                        <option value="utc-1">Cape Verde (UTC-01:00)</option>
+                        <option value="utc+0">Reykjavik (UTC+00:00)</option>
+                        <option value="utc+1">London, Lisbon (UTC+01:00)</option>
+                        <option value="utc+2">Paris, Berlin, Madrid, Rome, Lagos (UTC+02:00)</option>
+                        <option value="utc+3">Moscow, Istanbul, Nairobi, Riyadh (UTC+03:00)</option>
+                        <option value="utc+4">Dubai and Abu Dhabi (UTC+04:00)</option>
+                        <option value="utc+5">Tashkent and Islamabad (UTC+05:00)</option>
+                        <option value="utc+6">Almaty and Dhaka (UTC+06:00)</option>
+                        <option value="utc+7">Bangkok and Jakarta (UTC+07:00)</option>
+                        <option value="utc+8">Hong Kong, Perth, and Manila (UTC+08:00)</option>
+                        <option value="utc+9">Tokyo, Seoul, and Yakutsk (UTC+09:00)</option>
+                        <option value="utc+10">Sydney and Melbourne (UTC+10:00)</option>
+                        <option value="utc+11">Solomon Islands and Vladivostok (UTC+11:00)</option>
+                        <option value="utc+12">Auckland and Fiji (UTC+12:00)</option>
+                        <option value="utc+13">Tonga (UTC+13:00)</option>
+                        <option value="utc+14">Kiribati (UTC+14:00)</option>
+                    </select>
+                    <label>Select your timezone</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container row">
+        <div class="col l4">
+            <div class="section card">
+                <div class="card-content">
+                    <h4>Day 1</h4>
+                    <table class="highlight">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Item Name</th>
+                            <th>Item Price</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td>Alvin</td>
+                            <td>Eclair</td>
+                            <td>$0.87</td>
+                        </tr>
+                        <tr>
+                            <td>Alan</td>
+                            <td>Jellybean</td>
+                            <td>$3.76</td>
+                        </tr>
+                        <tr>
+                            <td>Jonathan</td>
+                            <td>Lollipop</td>
+                            <td>$7.00</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col l4">
+            <div class="section card">
+                <div class="card-content">
+                    <table class="highlight">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Item Name</th>
+                            <th>Item Price</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td>Alvin</td>
+                            <td>Eclair</td>
+                            <td>$0.87</td>
+                        </tr>
+                        <tr>
+                            <td>Alan</td>
+                            <td>Jellybean</td>
+                            <td>$3.76</td>
+                        </tr>
+                        <tr>
+                            <td>Jonathan</td>
+                            <td>Lollipop</td>
+                            <td>$7.00</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col l4">
+            <div class="section card">
+                <div class="card-content">
+                    <table class="highlight">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Item Name</th>
+                            <th>Item Price</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td>Alvin</td>
+                            <td>Eclair</td>
+                            <td>$0.87</td>
+                        </tr>
+                        <tr>
+                            <td>Alan</td>
+                            <td>Jellybean</td>
+                            <td>$3.76</td>
+                        </tr>
+                        <tr>
+                            <td>Jonathan</td>
+                            <td>Lollipop</td>
+                            <td>$7.00</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // get the select element
+        const select = document.getElementById("timezone-select");
+
+        // get the user's local timezone offset in minutes
+        const timezoneOffset = -(new Date().getTimezoneOffset());
+
+        // calculate the offset hours and add a plus sign if it's positive
+        const offsetHours = Math.abs(Math.floor(timezoneOffset / 60));
+        console.log(timezoneOffset);
+        const offsetSign = timezoneOffset < 0 ? "-" : "+";
+        const offsetString = `utc${offsetSign}${offsetHours.toString()}`;
+        console.log(offsetString);
+        // find the option element with the matching offset
+        const option = select.querySelector(`option[value="${offsetString}"]`);
+
+        // if the option is found, select it
+        if (option) {
+            option.selected = true;
+        }
+    </script>
+
+</div>
+</body>
+</html>
